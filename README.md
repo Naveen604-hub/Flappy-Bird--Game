@@ -38,3 +38,7 @@ Local Storage API
 ✨ Smooth animations
 📱 Mobile and desktop support
 🖱️ Mouse and touch controls
+
+<img width="652" height="917" alt="Flappy_Bird" src="https://github.com/user-attachments/assets/8a562841-f0bc-4061-9a1f-9db03e935576" />
+<img width="728" height="903" alt="Flappy_Dashboard" src="https://github.com/user-attachments/assets/09cab609-74bd-43f4-ac03-a29d117bcba4" />
+

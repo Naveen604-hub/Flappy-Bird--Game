@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A colorful Flappy Bird game built with HTML, CSS and JavaScript">
+    <title>Welcome to Flappy Bird Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<main class="game-wrapper">
+
+    <header class="game-header">
+
+        <div class="brand">
+            <div class="brand-icon">🐦</div>
+
+            <div>
+                <h1>Welcome to Flappy Bird Game</h1>
+                <p>Fly • Dodge • Score</p>
+            </div>
+        </div>
+
+        <div class="header-stats">
+
+            <div class="header-stat">
+                <span>BEST</span>
+                <strong id="bestScore">0</strong>
+            </div>
+
+            <div class="header-stat">
+                <span>SCORE</span>
+                <strong id="headerScore">0</strong>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <section
+        class="game-container"
+        id="gameContainer"
+        aria-label="Flappy Bird game"
+    >
+
+        <div class="sky">
+
+            <div class="sun"></div>
+
+            <div class="cloud cloud-1">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="cloud cloud-2">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="cloud cloud-3">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="hill hill-back"></div>
+            <div class="hill hill-front"></div>
+
+        </div>
+
+
+        <div
+            class="game-score"
+            id="gameScore"
+            aria-live="polite"
+        >
+            0
+        </div>
+
+
+        <div
+            class="bird"
+            id="bird"
+            aria-label="Bird"
+        >
+
+            <div class="bird-wing"></div>
+            <div class="bird-eye"></div>
+            <div class="bird-beak"></div>
+
+        </div>
+
+
+        <div
+            class="pipes-container"
+            id="pipesContainer"
+        ></div>
+
+
+        <div class="ground">
+
+            <div class="ground-top"></div>
+            <div class="ground-pattern"></div>
+
+        </div>
+
+
+        <div
+            class="game-overlay start-overlay active"
+            id="startScreen"
+        >
+
+            <div class="overlay-card">
+
+                <div class="small-bird">
+                    🐦
+                </div>
+
+                <span class="game-label">
+                    ARCADE GAME
+                </span>
+
+                <h2>
+                    Flappy Bird
+                </h2>
+
+                <p>
+                    Tap, click or press
+                    <strong>SPACE</strong>
+                    to flap your wings.
+                </p>
+
+
+                <div class="instructions">
+
+                    <div class="instruction-item">
+
+                        <span class="instruction-icon">
+                            🖱️
+                        </span>
+
+                        <div>
+                            <strong>Click / Tap</strong>
+                            <small>Flap</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="instruction-item">
+
+                        <span class="instruction-icon">
+                            ⌨️
+                        </span>
+
+                        <div>
+                            <strong>Space</strong>
+                            <small>Flap</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="primary-button"
+                    id="startButton"
+                >
+                    <span>▶</span>
+                    Start a Game
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="game-overlay game-over-overlay"
+            id="gameOverScreen"
+        >
+
+            <div class="overlay-card game-over-card">
+
+                <div class="game-over-icon">
+                    💥
+                </div>
+
+                <span class="game-label">
+                    GAME OVER
+                </span>
+
+                <h2>
+                    Nice Try!
+                </h2>
+
+
+                <div class="result-box">
+
+                    <div class="result-item">
+                        <span>SCORE</span>
+                        <strong id="finalScore">0</strong>
+                    </div>
+
+                    <div class="result-divider"></div>
+
+                    <div class="result-item">
+                        <span>BEST</span>
+                        <strong id="finalBestScore">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="new-best"
+                    id="newBestMessage"
+                >
+                    🏆 New Best Score Wow!
+                </div>
+
+
+                <div class="game-over-actions">
+
+                    <button
+                        type="button"
+                        class="primary-button"
+                        id="restartButton"
+                    >
+                        <span>↻</span>
+                        Play Again Buddy!
+                    </button>
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="homeButton"
+                    >
+                        Main Menu
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="game-overlay pause-overlay"
+            id="pauseScreen"
+        >
+
+            <div class="overlay-card">
+
+                <div class="pause-icon">
+                    ⏸
+                </div>
+
+                <h2>
+                    Paused
+                </h2>
+
+                <p>
+                    Take a quick break.
+                </p>
+
+                <button
+                    type="button"
+                    class="primary-button"
+                    id="resumeButton"
+                >
+                    ▶ Resume
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="pause-button"
+            id="pauseButton"
+            aria-label="Pause game"
+            title="Pause"
+        >
+            ⏸
+        </button>
+
+
+        <div
+            class="tap-hint"
+            id="tapHint"
+        >
+            <span>👆</span>
+            Tap to flap
+        </div>
+
+    </section>
+
+
+    <footer class="game-footer">
+
+        <div class="footer-item">
+
+            <span class="footer-icon">
+                🏆
+            </span>
+
+            <div>
+                <span>Best Score</span>
+                <strong id="footerBestScore">0</strong>
+            </div>
+
+        </div>
+
+
+        <div class="footer-divider"></div>
+
+
+        <div class="footer-item">
+
+            <span class="footer-icon">
+                🎮
+            </span>
+
+            <div>
+                <span>Controls</span>
+                <strong>Click / Space</strong>
+            </div>
+
+        </div>
+
+
+        <div class="footer-divider"></div>
+
+
+        <div class="footer-item">
+
+            <span class="footer-icon">
+                ⚡
+            </span>
+
+            <div>
+                <span>Challenge</span>
+                <strong>Beat Your Best</strong>
+            </div>
+
+        </div>
+
+    </footer>
+
+</main>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
